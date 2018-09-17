@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2018.8.19)  17 SEP 2018 22:05
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2018.8.19)  17 SEP 2018 22:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -160,26 +160,13 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 18.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.56 ^^I^^I\end{itemize}
-                        
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[1
+) [1
 
 ] (./hw1.aux) ) 
 Here is how much of TeX's memory you used:
  1618 strings out of 494558
  19167 string characters out of 6167440
- 81996 words of memory out of 5000000
+ 82996 words of memory out of 5000000
  5494 multiletter control sequences out of 15000+600000
  10032 words of font info for 46 fonts, out of 8000000 for 9000
  264 hyphenation exceptions out of 8191
