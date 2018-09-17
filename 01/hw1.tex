@@ -1,0 +1,59 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\author{Ding Yaoyao}
+\title{Mathematical Logic Homework 1}
+
+\newenvironment{sol}[1]
+{\par\vspace{3mm}\noindent{\it Solution #1}.}
+{\qed}
+
+\newcommand{\abs}[1]{\lvert#1\rvert}
+
+\begin{document}
+	\maketitle
+	
+	\begin{sol}{2.1}
+		$(a)\Rightarrow(b)$: If $M$ is a limited set, then there exists a bijection between $M$ and $[\abs{M}]$. If $M$ is a countable set, then there is a bijection between $M$ and $\mathbb{N}$. Because $M$ is at most countable, there exists a bijection $g$ from a subset of $\mathbb{N}$ to $M$. Then we define $f$ from $\mathbb{N}$ to $M$ such that
+		\begin{equation}
+		f(n) = 
+		\begin{cases}
+			g(n) & n \in Dom(f) \\
+			\text{an arbitrary element of $M$} & n \not \in Dom(f) 
+		\end{cases}
+		\end{equation}
+		Then $Range(f) = M$, which means $f$ is a surjection from $\mathbb{N}$ to $M$.
+		
+		$(b)\Rightarrow(c)$: For each $x \in M$, let $S_x = \{n \mid f(n) = x\}$. Then we define $g$ from $M$ to $\mathbb{N}$ such that
+		\begin{equation}
+		g(x) = \text{an arbitrary element of $S_x$}
+		\end{equation}
+		Because $f$ is a function from $\mathbb{N}$ to $M$, $S_x \cap S_y = \emptyset$ for different $x$ and $y$. Then $g$ is a injection from $M$ to $\mathbb{N}$.
+		
+		$(c)\Rightarrow(a)$: There is a bijection between $M$ and $Range(f)$. When the number of elements of $M$ is limited, $M$ is at most countable. When it's infinite, we only need to show that there is a bijection between $Range(f)$ and $\mathbb{N}$. Because $Range(f)$ is a subset of $\mathbb{N}$, we can list the elements of $Range(f)$ in a line in ascending order. Then let $g(i)$ be the $i$-th element in the line. Then $g$ is a bijection between $\mathbb{N}$ and $Range(f)$. At the same time, there is a bijection between $Range(f)$ and $M$. So there is a bijection between $\mathbb{N}$ and $M$, which means $M$ is countable. Above all, $M$ is at most countable.
+	\end{sol}
+
+	\begin{sol}{2.2}
+		Firstly, it's obvious that for any $n \in \mathbb{N}$, $A^n$ is at most countable. Let $f_n$ be the bijection from $\mathbb{N}$ to $A^n$. We can place the elements in $A^*$ in such an order:
+		$$
+			f_0(0), f_0(1), f_1(0), f_0(2), f_1(1), f_2(0), \dots 
+		$$
+		(Similar method are used to prove $\mathbb{Q}$ is countable).
+	\end{sol}
+
+	\begin{sol}{2.3}
+		Prove by contradiction.
+		
+		Assume $f$ is such a function.
+		
+		
+		We construct a set $S$ as follows, for any $x \in M$,
+		\begin{itemize}
+		\end{itemize}
+	\end{sol}
+
+\end{document}
