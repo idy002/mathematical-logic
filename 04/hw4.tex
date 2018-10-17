@@ -1,0 +1,87 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{enumitem} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\author{Ding Yaoyao}
+\title{Mathematical Logic Homework 4}
+
+\newenvironment{sol}[1]
+{\par\vspace{3mm}\noindent{\it Solution #1}.}
+{\qed}
+
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\fA}{\mathfrak{A}}
+\newcommand{\fB}{\mathfrak{B}}
+\newcommand{\fC}{\mathfrak{C}}
+\newcommand{\fJ}{\mathfrak{J}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\begin{document}
+	\maketitle
+	
+	\begin{sol}{4.1} 
+		\begin{table}[ht]
+			\centering
+			\begin{tabular}{rcccl}
+				$1$ & $\Gamma$ & $\neg \varphi$ & $\psi$ & premise\\
+				$2$ & $\Gamma$ & $\neg \varphi$ & $\neg \psi$ & premise\\
+				\hline 
+				& $\Gamma$ & & $\varphi$ & second contradiction by 1, 2(regard $\Gamma\neg\varphi$ as $\Gamma'$)
+			\end{tabular}
+		\end{table} 
+	
+	\end{sol} 
+	
+	\begin{sol}{4.2} %
+		
+		(a)
+		
+		\begin{table}[ht]
+			\centering
+			\begin{tabular}{rcccl}
+			$1$ & $\Gamma$ & & $\varphi$ & premise \\
+			$2$ & $\Gamma$ & $\neg\varphi$ & $\varphi$ & antecedent by 1\\
+			$3$ & $\Gamma$ & $\neg\varphi$ & $\neg\neg\varphi$ & contraposition by 2\\
+			$4$ & $\Gamma$ & $\neg\neg\varphi$ & $\neg\neg\varphi$ & assumption\\
+			\hline
+			& $\Gamma$ & & $\neg\neg\varphi$
+			\end{tabular}
+		\end{table}
+		
+		(b)
+		
+		\begin{table}[ht]
+			\centering
+			\begin{tabular}{rcccl}
+				$1$ & $\Gamma$ & & $\neg\neg\varphi$ & premise\\
+				$2$ & $\Gamma$ & $\neg\varphi$ & $\neg\neg\varphi$ & antecedent by 1\\
+				$3$ & $\Gamma$ & $\neg\varphi$ & $\neg\varphi$ & assumption \\
+				\hline 
+				& $\Gamma$ & & $\varphi$ & contradiction by 2, 3
+			\end{tabular}
+			
+		\end{table}
+		
+	\end{sol} 
+	\begin{sol}{4.3} %
+		
+		It's not derivable.
+		
+		Prove by contradiction.
+		
+		Assume that it's derivable. Let $\Gamma$ be empty.
+		
+		Let $\fA$ be the S-structure of natural number. Let $\varphi$ be $x \equiv 1$.
+		
+		Then $\fA\models \exists x \varphi$, by our assumption, $\fA\models\forall x\varphi$. 
+		But it's obvious that $\fA \not\models\forall x\varphi$. It's a contradiction.
+		
+		So it's not derivable.
+		
+	\end{sol} 
+
+\end{document}

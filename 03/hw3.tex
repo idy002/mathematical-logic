@@ -1,0 +1,160 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{enumitem} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\author{Ding Yaoyao}
+\title{Mathematical Logic Homework 3}
+
+\newenvironment{sol}[1]
+{\par\vspace{3mm}\noindent{\it Solution #1}.}
+{\qed}
+
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\fA}{\mathfrak{A}}
+\newcommand{\fB}{\mathfrak{B}}
+\newcommand{\fC}{\mathfrak{C}}
+\newcommand{\fJ}{\mathfrak{J}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\begin{document}
+	\maketitle
+	
+	\begin{sol}{2.1} %
+		
+		(1) Let $\pi$ be the identify function from $A$ to $A$. So $\pi(a) = a$ for all $a \in A$. Then 
+		\begin{itemize}
+			\item (i) Identity function $\pi$ is a bijection.
+			\item (ii) For any n-ary relation symbol $R \in S$ and $a_0, \dots, a_{n-1}\in A$.
+			$$(a_0,\dots,a_{n-1})\in R^{\fA} \Leftrightarrow (\pi(a_0), \dots, \pi(a_{n-1})\in R^{\fA}.$$
+			\item (iii) For any n-ary function symbol $f \in S$ and $a_0,\dots,a_{n-1} \in A$ 
+			$$\pi(f^{\fA}(a_0,\dots,a_{n-1})) = f^{\fA}(a_0,\dots,a_{n-1}) = f^{\fA}(\pi(a_0),\dots,\pi(a_{n-1}).$$
+			\item (iv) For any constant $c \in S$
+			$$ \pi(c^{\fA}) = c^{\fA}. $$
+		\end{itemize}
+		So $\fA \cong \fB$
+		
+		(2) Let $\pi_1$ be the isomorphism from $A$ to $B$. Then define $\pi_2$ as the inverse function of $\pi_1$.
+		\begin{itemize}
+			\item (i) The inverse of a bijection is also a bijection.
+			\item (ii) For any n-ary relation symbol $R \in S$ and $b_0, \dots, b_{n-1}\in B$. There exist $a_0, \dots, a_{n-1} \in A$ such that $\pi_1(a_i) = b_i$ and $\pi_2(b_i) = a_i$ for $i \in \{0, \dots, n-1\}$ such that
+			$$
+				(a_0, \dots, a_{n-1}) \in R^{\fA} \Leftrightarrow (\pi_1(a_0),\dots, \pi_1(a_{n-1})) \in R^{\fB},
+			$$which is equivalent to
+			$$
+				(b_0, \dots b_{n-1}) \in R^{\fB} \Leftrightarrow (\pi_2(b_0),\dots,\pi_2(b_{n-1}) \in R^{\fA}.
+			$$
+			\item (iii) For any n-ary function symbol $f \in S$ and $b_0, \dots, b_{n-1}\in B$. There exist $a_0, \dots, a_{n-1} \in A$ such that $\pi_1(a_i) = b_i$ and $\pi_2(b_i) = a_i$ for $i \in \{0, \dots, n-1\}$. Because 
+			$$
+			\pi_1(f^{\fA}(a_0,\dots,a_{n-1})) = f^{\fB}(b_0,\dots,b_{n-1}),
+			$$
+			then
+			
+			\begin{align*}
+				\pi_2(f^{\fB}(b_0,\dots,b_{n-1})) = \pi_2(\pi_1(f^{\fA}(a_0,\dots,a_{n-1}))) \\
+				= f^{\fA}(\pi_2(b_0),\dots,\pi_2(b_{n-1})).
+			\end{align*}
+
+			\item (iv) For any constant $c \in S$
+			$$
+				\pi_1(c^\fA) = c^\fB
+			$$
+			and then
+			$$
+				\pi_2(c^\fB) = \pi_2(\pi_1(c^\fA)) = c^\fA 
+			$$
+		\end{itemize}
+		Above all, $\fB \cong \fA$.
+		
+		(3) Let $\pi_1$ be the bijection from $A$ to $B$ and $\pi_2$ be the bijection from $B$ to $C$. Then define $\pi_3:A\rightarrow C$ such that $\pi_3(a) = \pi_2(\pi_1(a))$ for all $a \in A$. 
+		\begin{itemize}
+			\item (i) The composition of two bijections is also a bijection.
+			\item (ii) For any n-ary relation symbol $R \in S$ and $a_0, \dots, a_{n-1} \in A$, we define $b_i = \pi_1(a_i)$ and $c_i = \pi_2(b_i)$ for all $0 \leq i < n$. Because $\pi_1$ and $\pi_2$ are isomorphism from $\fA$ to $\fB$ and from $\fB$ to $\fC$ respectively, we have
+			\begin{align*}
+			(a_0,\dots,a_{n-1}) \in R^\fA \Leftrightarrow (b_0, \dots, b_{n-1}) \in R^\fB \\
+			(b_0,\dots,b_{n-1}) \in R^\fB \Leftrightarrow (c_0, \dots, c_{n-1}) \in R^\fC 
+			\end{align*}
+			And then
+			$$
+			(a_0,\dots,a_{n-1}) \in R^\fA \Leftrightarrow (\pi_3(a_0), \dots,\pi_3(a_{n-1}) \in R^\fC 
+			$$
+			\item (iii) For any n-ary function symbol $f \in S$ and $a_0, \dots, a_{n-1}\in A$. We define $b_i = \pi_1(a_i)$ and $c_i = \pi_2(b_i)$ for all $0 \leq i < n$. Because $\pi_1$ and $\pi_2$ are isomorphism from $\fA$ to $\fB$ and from $\fB$ to $\fC$ respectively, we have
+			\begin{align*}
+			\pi_1(f^\fA(a_0,\dots,a_{n-1})) = f^\fB(b_0,\dots,b_{n-1}) \\
+			\pi_2(f^\fB(b_0,\dots,b_{n-1})) = f^\fC(c_0,\dots,c_{n-1}),
+			\end{align*} 
+			which means
+			$$
+			\pi_3(f^\fA(a_0,\dots,a_{n-1})) = f^\fC(\pi_3(a_0),\dots,\pi_3(a_{n-1}))
+			$$
+			\item (iv) For any constant $c \in S$,
+			$$
+				\pi_3(c^\fA) = \pi_2(\pi_1(c^\fA)) = \pi_2(c^\fB) = c^\fC.
+			$$
+		\end{itemize}
+		Above all, $\fA \cong \fC$.
+	\end{sol}
+
+	\begin{sol}{2.2}
+		
+		(a) 
+		
+		(b) 
+		\begin{align*}
+			\models \varphi \lor \psi \Longleftrightarrow \text{ for all $\fJ$, $\fJ\models \varphi$ implies $\fJ \models \psi$} \Longleftrightarrow \varphi \models \psi
+		\end{align*}
+	\end{sol}
+	\begin{sol}{2.3}
+		
+		$\Rightarrow$: By Isomorphism Theorem, it's true.
+		
+		$\Leftarrow$: $A$ is finite and assume that $A = \{a_0, a_1, \dots, a_{n-1}\}$. Then we can construct the $\varphi$ as
+		\begin{align} 
+			\exists_{v_0}\exists_{v_1}\cdots\exists_{v_{n-1}}\left (\bigwedge_{0\leq i < j <n}\lnot(v_{i}\equiv v_{j})\right ) \\
+			\wedge \left(\neg\exists_{v_{n}}\bigwedge_{0\leq i <n}\neg(v_n=v_i)\right) \\
+			\wedge \left(\bigwedge_{1\leq k \leq n_1} \bigwedge_{\text{ k-ary Rela. R }} \bigwedge_{(a_{j_1},\dots,a_{j_k})\in R}R(v_{j_1},\dots,v_{j_k}) \bigwedge_{(a_{j_1},\dots,a_{j_k})\not\in R}\neg R(v_{j_1},\dots,v_{j_k}) \right) \\
+			\wedge \left(\bigwedge_{1\leq k \leq n_2} \bigwedge_{\text{ k-ary function $f$ }} \bigwedge_{f(a_{j_1},\dots,a_{j_k})=a_{j_{k+1}}}f(v_{j_1},\dots,v_{j_k})\equiv v_{j_{k+1}} \right) \\
+			\wedge\left(\bigwedge_{c \in S \text{ and } c^\fA = a_j}c\equiv v_j\right)
+		\end{align} 
+		where $n_1$ is the max number of arguments of a relation and $n_2$ is the max number of arguments of a function. Intuitively, Condition $(1)$ makes S-structure has at least $n$ elements in $A$. Condition $(2)$ makes it at most $n$. Condition $(3),(4),(5)$ makes the relations, functions and constants isomorphic respectively.
+		
+		For simplicity, We use 
+		$$
+			\exists_{v_0}\exists_{v_1}\cdots\exists_{v_{n-1}}P(v_0,\dots,v_{n-1})
+		$$
+		to represent $\varphi$.
+		
+		Of course $\fA\models\varphi$, then there exists $a_0,\dots,a_{n-1}\in A$ such that 
+		$$
+			\fA\models P(a_0,\dots,a_{n-1}).
+		$$
+		Because $\fA\models\varphi \Leftrightarrow \fB\models\varphi$, then $\fB\models\varphi$. There exists $b_0,\dots,b_{n-1}\in B$ such that
+		$$
+			\fB\models P(b_0,\dots,b_{n-1})
+		$$
+		By $(1)(2)$, we can know that $a_i$ are distinct and $b_i$ are distinct and $\abs{A}=\abs{B}$. Then we can construct a bijection $\pi$ from $A$ to $B$ such that 
+		$$
+			\pi(a_i) = b_i \text{ for all $0 \leq i < n$}
+		$$
+		
+		For any n-ary relation symbol $R \in S$ and $x_0,\dots,x_{n-1} \in A$, by (3), 
+		$$
+			(x_0,\dots,x_{n-1}) \in R^\fA \Leftrightarrow (\pi(x_0),\dots,\pi(x_{n-1}) \in R^\fB 
+		$$
+		
+		For any n-ary function symbol $R \in S$ and $x_0,\dots,x_{n-1} \in A$, by (4),
+		$$
+			\pi(f^\fA(x_0,\dots,x_{n-1})) = f^\fB(\pi(x_0),\dots,\pi(x_{n-1})
+		$$
+		
+		For any $c \in S$, by (5),
+		$$
+			\pi(c^\fA) = c^\fB 
+		$$
+		
+	\end{sol}
+
+\end{document}

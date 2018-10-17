@@ -1,0 +1,106 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{enumitem} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\author{Ding Yaoyao}
+\title{Mathematical Logic Homework 2}
+
+\newenvironment{sol}[1]
+{\par\vspace{3mm}\noindent{\it Solution #1}.}
+{\qed}
+
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\fA}{\mathfrak{A}}
+\newcommand{\fB}{\mathfrak{B}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\begin{document}
+	\maketitle
+	
+	\begin{sol}{2.1}
+		
+		(a)
+		%\newcommand{\opA}{\circ^{\cA}}
+		%\newcommand{\opB}{\circ^{\cB}}
+		%\newcommand{\opAB}{\circ^{\cA\times\cB}}
+		\newcommand{\op}{\circ}
+		\newcommand{\opA}{\circ}
+		\newcommand{\opB}{\circ}
+		\newcommand{\opAB}{\circ}
+		
+		Let $\fA = (\cA, \opA, e^\cA )$, $\fB = (\cB, \opB, e^\cB)$ and $\fA\times\fB = (\cA\times\cB, \opAB, e^{\cA\times\cB})$.
+		\begin{itemize}
+			\item For all $(a_1,b_1), (a_2,b_2), (a_3,b_3) \in \cA\times\cB$,
+			$$\begin{array}{rl}
+			      & ((a_1,b_1)\opAB(a_2,b_2))\opAB(a_3,b_3) \\
+				= & (a_1 \opA a_2, b_1 \opB b_2)\opAB(a_3,b_3) \\
+				= & ((a_1 \opA a_2)\opA a_3, (b_1 \opB b_2)\opB b_3) \\
+				= & (a_1 \opA(a_2 \opA a_3), b_1 \opB (b_2\opB b_3)) \\
+				= & (a_1, b_1) \opAB (a_2 \opA a_3, b_2\opB b_3) \\
+				= & (a_1, b_1) \opAB((a_2, b_2) \opAB (a_3, b_3)) \\
+			\end{array}$$
+			\item For all $(a,b) \in \cA\times\cB$,
+			$$\begin{array}{rl}
+				  & (a,b) \op (e^\cA, e^\cB)  \\
+				= & (a \op e^\cA, b \op e^\cB)  \\
+				= & (a, b)
+			\end{array}
+			$$
+			\item For all $(a,b) \in \cA\times\cB$, there exists $c \in \cA$ and $d \in \cB$ such that 
+			$$
+				a\op c = e^\cA, b \op d = e^\cB.
+			$$
+			Then $$(a,b) \op (c, d) = (a\op c, b \op d) = (e^\cA, e^\cB) = e^{\cA\times\cB},$$ where $(c,d) \in \cA\times\cB$.
+		\end{itemize}
+	
+		Above all, $\fA \times \fB$ is a group.
+		
+		(b) 
+		\newcommand{\RA}{R^\cA}
+		\newcommand{\RB}{R^\cB}
+		\newcommand{\RAB}{R^{\cA\times\cB}}
+		Let $\fA = (\cA, \RA)$, $\fB = (\cB, \RB)$ and $\fA\times\fB = (\cA\times\cB, \RAB)$.
+		\begin{itemize}
+			\item For all $(a,b) \in \cA\times\cB $, we have $(a,a) \in \RA$ and $(b,b) \in \RB$ and then$((a,b), (a,b)) \in \RAB $.
+			\item For all $(a_1, b_1), (a_2,b_2) \in \cA\times\cB$, if $((a_1, b_1), (a_2,b_2) \in \RAB$ then $(a_1,a_2) \in \RA$ and $(b_1,b_2) \in \RB$. Because $\fA$ and $\fB$ are groups, we have $(a_2,a_1) \in \RA$ and $(b_2,b_1) \in \RB$. Then $((a_2,b_2), (a_1,b_1)) \in \RAB$.
+			\item For all $(a_1,b_1), (a_2,b_2), (a_3,b_3)$, if $((a_1,b_1),(a_2,b_2)), ((a_2,b_2), (a_3, b_3)) \in \RAB$, we have $(a_1,a_2), (a_2,a_3) \in \RA$ and $(b_1,b_2),(b_2,b_3)\in \RB$. Then $(a_1,a_3) \in \RA$ and $(b_1,b_3) \in \RB$. Finally, we have $((a_1,b_1), (a_3,b_3)) \in \RAB$.
+		\end{itemize}
+	
+		(c)
+		
+		Because $(1^\cA, 0^\cB)$ has no inverse, $\fA\times\fB$ is not a field. 
+	\end{sol}
+
+	\begin{sol}{2.2}
+		\newcommand{\fJ}{\mathfrak{J}}
+		For all $\fJ \models \Theta_{Gr}$, we have 
+		$$
+			\fJ\frac{a}{v_0}\frac{b}{v_1}\frac{c}{v_2} 
+			\models (a \circ b)\circ c = a(b \circ c) \quad(\text{for all $a,b,c \in \cA$})
+		$$
+		which means for all $a, b, c \in \cA$, we have $(a\circ b) \circ c = a \circ (b \circ c)$.
+		Similarly, for all $a \in \cA$, we have $a \circ e = a$ and exists $a'$ such that $a\circ a'=e$.
+		
+		Let $a' \in \cA$ such that $a\circ a' = e$ and $a'' \in \cA$ such that $a' \circ a'' = e$. Then 
+		$$
+			a' \circ a = a' \circ a \circ e = a' \circ a \circ a' \circ a'' = a' \circ a'' = e
+		$$
+		and then
+		$$
+			e \circ a = a\circ a' \circ a = a \circ e = a
+		$$.
+		which means for all $a \in \cA$, we have $\fJ\frac{a}{v_0}\models e \circ v_0 \equiv v_0$ and then 
+		$\fJ \models \forall v_0 \; e \circ v_0 = v_0$. Similarly, for all $a \in \cA$, exists $b \in \cA$ such that $\fJ\frac{a}{v_0}\frac{b}{v_1}\models v_1\circ v_0 = e$, which means $\fJ \models \forall v_0 \exists v_1 \; v_1 \circ v_0 = e$.
+		
+		Above all, $\Theta_{Gr} \models \forall v_0 \; e \circ v_0 = v_0$ and $\Theta_{Gr} \models \forall v_0 \exists v_1 \; v_1 \circ v_0 = e$.
+	\end{sol}
+
+	\begin{sol}{2.3}
+
+	\end{sol}
+
+\end{document}
