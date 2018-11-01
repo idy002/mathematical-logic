@@ -1,0 +1,44 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{enumitem} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\author{Ding Yaoyao}
+\title{Mathematical Logic Homework 5}
+
+\newenvironment{sol}[1]
+{\par\vspace{3mm}\noindent{\it Solution #1}.}
+{\qed}
+
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\fA}{\mathfrak{A}}
+\newcommand{\fB}{\mathfrak{B}}
+\newcommand{\fC}{\mathfrak{C}}
+\newcommand{\fJ}{\mathfrak{J}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\begin{document}
+	\maketitle
+	
+	\begin{sol}{5.1} %
+		Because $\Phi$ is inconsistent, for any $\varphi$, $\Phi \vdash \varphi$. Then by the definition of $\sim$ relation, there is only one element of the universe $T^{\Phi}$ and the only element is the whole set of the terms $T^{S}$. Let $e$ denote the lonely element. For any relation $R$, we have $(e,\dots,e) \in R$ because $\Phi \vdash R(t_1,\dots,t_n)$. For any function $f$, because we have only one element in universe, $f(e,\dots,e) = e$. For any constant $c$, $c^{\Phi} = e$.
+	\end{sol} 
+		
+	\begin{sol}{5.2} %
+		(1) Let's construct a S-interpretation $\mathfrak{I}$ that is satisfied by the $\Phi$. Let the universe $A = \{a, b\}$ and $a \in R, b \not\in R$. Let $\beta(x) = b$ for all $x \in A$. Then $\mathfrak{I} \models \Phi$. Because $\Phi$ is satisfiable, then $\Phi$ is consistent.
+		
+		(2) Because no function and constant symbol exists, $T^S$ only contains variables(i.e. $T^S = \{v_0, v_1, \dots\}$). Then $\neg Rt \in \Phi$. By the lemma 2.6.a in Logic5.pdf, $\Phi \vdash Rt$ is equivalent to that $\Phi \cup \{\neg Rt\}$ is inconsistent. Because $\neg Rt \in \Phi$, then $\Phi \cup \{\neg Rt\} = \Phi$. By (1), $\Phi$ is consistent, which is a contradiction. So such term $t \in T^S$ does not exist.
+	\end{sol} 
+
+	\begin{sol}{5.3} %
+		(1) Let's construct a S-interpretation $\mathfrak{I}$ that is satisfied by $\Phi$. Let the universe $A = \{a\}$ and $a \in R$. Then $\mathfrak{I} \models \Phi$.
+		
+		(2) It's equivalent to show that $\Phi \cup \{ \neg Rx\}$ and $\Phi \cup \{\neg Ry\}$ are consistent by lemma 2.6.a. Let's prove $\Phi \cup \{\neg Rx\}$ is consistent and the proof of $\Phi \cup \{\neq Ry\}$ is completely the same. Let the universe $A = \{a, b\}$, $a \in R, b \not \in R$ and $\beta(x) = a$ and $\beta(y) = b$. Then $\mathfrak{I} \models Rx \vee Ry$ and $\mathfrak{I} \models \neg Rx$. Then $\mathfrak{I} \models \Phi \cup \{\neg Rx\}$ is consistent. 
+		
+		(3) Because $\Phi \not\vdash Rx$, then $\mathfrak{T}^\Phi \not\models Rx$. Similarly, $\mathfrak{T}^\Phi \not\models Ry$. Thus $\mathfrak{T}^\Phi \not \models Rx\vee Ry$, which means $\mathfrak{T}^\Phi \not\models \Phi$.
+	\end{sol} 
+
+\end{document}
