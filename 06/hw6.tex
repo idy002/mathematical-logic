@@ -1,0 +1,93 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{enumitem} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\author{Ding Yaoyao}
+\title{Mathematical Logic Homework 6}
+
+\newenvironment{sol}[1]
+{\par\vspace{3mm}\noindent{\it Solution #1}.}
+{\qed}
+
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\fA}{\mathfrak{A}}
+\newcommand{\fB}{\mathfrak{B}}
+\newcommand{\fC}{\mathfrak{C}}
+\newcommand{\fI}{\mathfrak{I}}
+\newcommand{\fJ}{\mathfrak{J}}
+\newcommand{\fT}{\mathfrak{T}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\begin{document}
+	\maketitle
+	
+	\begin{sol}{6.1} %
+		(I think the exercise wants to prove consistent $\Psi$ that contains witness does not exist)
+		
+		Let's construct a S-interpretation $\mathfrak{I}$ that models $\Phi$ to prove $\Phi$ is consistent. 
+		
+		Let the universe set $A = \{p, q\}$, where $p,q$ are two different elements.
+		
+		For any n-ary relation $R \in S$ and $x_1,\dots,a_n \in A$,
+		$$
+			(a_1,\dots,a_n) \in R
+		$$
+		
+		For any n-ary relation $f \in S$ and $a_1,\dots,a_n \in A$,
+		$$
+			f(a_1,\dots,a_n) = p
+		$$
+		
+		For any variable $v$, 
+		$$
+			\beta(v) = p
+		$$
+		
+		Then for any term $t \in T^S$, $\mathfrak{I}(t) = p$, in particular $\mathfrak{I}(v_0) = p$. So $\mathfrak{I} \models v_0 \equiv t$ for any $t \in T^S$. Because $A$ has two different elements, $\mathfrak{I}\models \exists v_0\exists v_1 \neg v_0 \equiv v_1$. Eventually, $\mathfrak{I} \models \Phi$, thus $\Phi$ is consistent. 
+		
+		Let's prove that such $\Psi$ does not exist by contradiction. Assume that there exists $\Psi$ such that $\Phi \subseteq \Psi \subseteq L^S$ and $\Psi$ contains witness. Then there exists $t_0, t_1 \in T^S$ such that 
+		$$
+			\Phi \models  \exists v_0 \exists v_1 \neg v_0 \equiv v_1 \rightarrow \exists v_1 \neg t_0 \equiv v_1 
+		$$
+		$$
+			\Phi \models  \exists v_1 \neg t_0 \equiv v_1 \rightarrow \neg t_0 \equiv t_1
+		$$
+		Because $\Phi \models \exists v_0 \exists v_1 \neg v_0 \equiv v_1$, we can derive $\Phi \models \neg t_0 \equiv t_1$. Because $\Phi \models v_0 \equiv t$ for all $t \in T^S$, $\Phi \models t_0 \equiv t_1$. Then $\Phi$ is inconsistent and contradiction occurs. So such $\Psi$ does not exist.
+		
+	\end{sol} 
+
+	\begin{sol}{6.2} %
+		Let $\beta$ be any assignment of $\mathfrak{A}$ and let $\mathfrak{I} = (\mathfrak{A}, \beta)$. For any $\overline{t} \in T^{\Phi}$, define $h:T^{\Phi}\rightarrow A$ as
+		$$
+			h(\overline{t}) = \mathfrak{I}(t)
+		$$
+		The function $h$ is well-defined because for any $t_1, t_2 \in T^S$ such that $t_1 \sim t_2$, we have $\Phi \models t_1 \equiv t_2$ and we can derive $\mathfrak{A} \models t_1 \equiv t_2$ from $\mathfrak{A} \models \Phi$ and thus $\mathfrak{I}(t_1) = \mathfrak{I}(t_2)$.
+		
+		Then let's check the required three properties.
+		
+		(1) For every n-ary relation symbol $R \in S$ and $\overline{t_1}, \dots, \overline{t_n} \in T^\Phi$, we have
+		$$
+			(\overline{t_1},\dots,\overline{t_n}) \in R^{\fT^\Phi} \text{ implies } \Phi \models R(t_1,\dots,t_n) \text{ implies } \mathfrak{A} \models R(t_1,\dots,t_n)
+		$$
+		And then $(\mathfrak{I}(t_1),\dots,\mathfrak{I}(t_n)) \in R^{\mathfrak{A}}$
+		
+		(2) For every n-ary function symbol $f \in S$ and $\overline{t_1}, \dots, \overline{t_n} \in T^\Phi$, we have
+		\begin{align} 
+			h(f^{\fT^\Phi}(\overline{t_1}, \dots, \overline{t_n})) 
+			= h(\overline{f(t_1,\dots,t_n)})  = \fI(f(t_1,\dots,t_n)) \\
+			= f^\fA(\fI(t_1),\dots,\fI(t_n)) = f^\fA(h(\overline{t_1}),\dots,h(\overline{t_n}))
+		\end{align} 
+		
+		(3) For every constant $c \in S$, 
+		$$
+			h(c^{\fT^\Phi}) = \fI(c) = c^\fA 
+		$$
+		
+		Above all, $h$ is a homomorphism from $\fT^\Phi$ to $\fA$.
+	\end{sol} 
+
+\end{document}
