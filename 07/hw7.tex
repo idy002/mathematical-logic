@@ -1,0 +1,48 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{enumitem} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\author{Ding Yaoyao}
+\title{Mathematical Logic Homework 7}
+
+\newenvironment{sol}[1]
+{\par\vspace{3mm}\noindent{\it Solution #1}.}
+{\qed}
+
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\fA}{\mathfrak{A}}
+\newcommand{\fB}{\mathfrak{B}}
+\newcommand{\fC}{\mathfrak{C}}
+\newcommand{\fI}{\mathfrak{I}}
+\newcommand{\fJ}{\mathfrak{J}}
+\newcommand{\fT}{\mathfrak{T}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\begin{document}
+	\maketitle
+	
+	\begin{sol}{7.1}
+		By Completeness Theorem, we can derive $\Theta \models \varphi$ from $\Theta \vdash \varphi$. Then for any $S$-interpretation $\mathfrak{I}$ 
+		$$
+			\fI \models \Theta \text{ implies } \fI \models \varphi
+		$$
+		We can construct a $S_0$-interpretation $\fI'$ by retaining the symbols occurring in $\Theta$ and $\varphi$ and keep their interpretation unchanged. By Coincidence Lemma, 
+		$$
+			\fI' \models \Theta \text{ implies } \fI' \models \varphi 
+		$$
+		It's obvious that any $S_0$-interpretation can be expanded to a $S$-interpretation without changing the interpretation of symbols in $S_0$. So for any $S_0$-interpretation $\fI'$,
+		$$
+					\fI' \models \Theta \text{ implies } \fI' \models \varphi 
+		$$
+		which means $\Theta \models \varphi$ (Now $\varphi$ is a $S_0$-formula and so does the formulas in $\Theta$ ). By Completeness Theorem, $\Theta \vdash \varphi$ and every formula occurs in the proof is a $S_0$-formula. 
+		
+	\end{sol}
+
+	\begin{sol}{7.2}
+	\end{sol}
+
+\end{document}
