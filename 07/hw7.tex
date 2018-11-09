@@ -6,12 +6,16 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
+
 \author{Ding Yaoyao}
 \title{Mathematical Logic Homework 7}
 
 \newenvironment{sol}[1]
 {\par\vspace{3mm}\noindent{\it Solution #1}.}
 {\qed}
+
+\newenvironment{thm}[1]
+{\par\vspace{3mm}\noindent{\textbf{#1}}.\quad}{\\\\}
 
 \newcommand{\abs}[1]{\lvert#1\rvert}
 \newcommand{\fA}{\mathfrak{A}}
@@ -42,7 +46,31 @@
 		
 	\end{sol}
 
-	\begin{sol}{7.2}
+	Let's prove the general version of Zorn' Lemma, which can be described as:
+	\begin{thm}{Zorn's Lemma}
+		Assume $A$ is an nonempty set and $\preceq$ is a partial order of $A$. For any chain $C \subseteq A$, there is an upper bound $s$ of $C$ such that $s \in A$. Then there exists a maximal element $c$ in $A$.
+	\end{thm}
+	(The Zorn's Lemma discussed in class is a special case of this theorem, where $A$ is the power set of $M$ and $\preceq$ is the $\subseteq$(subset) relation)
+
+	\begin{sol}{7.2}\footnote{Reference: 	https://www.drmaciver.com/2015/12/direct-proofs-from-the-well-ordering-theorem}
+		Let $\leq$ be a well order of $A$ and $\preceq$ be a partial order of $A$. Let's construct a function $f$
+		by
+		$$
+		f(x) = 
+		\begin{cases}
+			1, & \text{for any $y\leq x, y\neq x$ and $f(y) = 1$, $x \preceq y$ }\\
+			0, & \text{otherwise}
+		\end{cases}
+		$$
+		Let 
+		$$C = \{x \mid f(x) = 1\}$$
+		Then $C$ is a chain for $\preceq$ because for any $x, y \in C$, $x \preceq y$ or $y \preceq x$ by the definition of $f$.
+		
+		By the assumption of Zorn's Lemma, there is some upper bound for $C$, call it $s$.
+		
+		Firstly, because $\{y \mid y\leq s,f(y)=1\} \subseteq C$, $y \preceq s$ for all $y \in C$, we must have $s \in C$.
+	
+		Then $s$ must be a maximal element of $A$ for relation $\preceq$. We can prove this by contradiction. If there exist $t \in A$ such that $s \neq t$ and $s \preceq t$, then $t$ must be in $C$, which contradicts that $s$ is an upper bound of $C$.
 	\end{sol}
 
 \end{document}
