@@ -1,0 +1,121 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{enumitem} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\author{Ding Yaoyao}
+\title{Mathematical Logic Homework 10}
+
+\newenvironment{sol}[1]
+{\par\vspace{3mm}\noindent{\it Solution #1}.}
+{\qed}
+
+\newenvironment{thm}[1]
+{\par\vspace{3mm}\noindent{\textbf{#1}}.\quad}{\\\\}
+
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\fA}{\mathfrak{A}}
+\newcommand{\fB}{\mathfrak{B}}
+\newcommand{\fC}{\mathfrak{C}}
+\newcommand{\fI}{\mathfrak{I}}
+\newcommand{\fJ}{\mathfrak{J}}
+\newcommand{\fT}{\mathfrak{T}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\begin{document}
+	\maketitle
+	
+	\begin{sol}{10.1}
+		
+		We call the sentences in $S_{ar}$ sentence $P_1$ to $P_7$ in order.
+		
+		$P_1: \forall x\neg x+1\equiv0$
+		
+		$P_2: \forall x\;x+0=x$
+		
+		$P_3: \forall x\;x\cdot0=0$
+		
+		$P_4: \forall x\forall y(x+1\equiv y+1 \rightarrow x\equiv y)$
+		
+		$P_5: \forall x\forall y\;x+(y+1) \equiv (x+y)+1$
+		
+		$P_6: \forall x\forall y\;x\cdot (y+1) = x\cdot y + x$
+		
+		$P_7: \forall x_1 \cdots\forall x_n \left( \left(\varphi\frac{0}{y}\wedge\forall y(\varphi\rightarrow\varphi\frac{y+1}{y})\right)\rightarrow \forall y \varphi \right)$
+		
+		By $P_2$, for all $x, y$, if $x+0 \equiv y+0$, we have $x \equiv x+0 \equiv y+0 \equiv y$, then
+		\begin{equation}
+			\forall x\forall y\;x+0\equiv y+0\rightarrow x\equiv y
+		\end{equation}
+		
+		By $P_5$, $x+(z+1)\equiv y+(z+1)$ is equivalent to $(x+z)+1\equiv (y+z)+1$. By $P_4$, $x+z\equiv y+z$. Then $x+z\equiv y+z\rightarrow x\equiv y$ implies $x \equiv y$. Then
+		\begin{equation}
+			\forall x \forall y (x+z\equiv y+z\rightarrow x\equiv y)\rightarrow (x+(z+1)\equiv y+(z+1)\rightarrow x\equiv y)
+		\end{equation}
+		
+		By $(1), (2), P_7$, we have
+		\begin{equation}
+			\forall x\forall y\forall z\;x+z\equiv y+z\rightarrow x\equiv y
+		\end{equation}
+		
+		Let $y = 0$ in $P_5$, we have $\forall x\; x+(0+1)\equiv (x+0)+1 \equiv x + 1$. By $(3)$, we have $0+1 \equiv 1$. By $P_2$, we have
+		\begin{equation}
+			0+1 \equiv 1+0
+		\end{equation}
+		
+		Because $x+1\equiv 1+x$ implies $(x+1)+1 \equiv (1+x)+1 \equiv 1+(x+1)$, we have
+		\begin{equation}
+			\forall x\;x+1\equiv 1+x\rightarrow (x+1)+1\equiv 1+(x+1)
+		\end{equation}
+		
+		By $(4), (5), P_7$, we have
+		\begin{equation}
+			\forall x\; x+1\equiv 1+x
+		\end{equation}
+		
+		Because $0+x\equiv x+0$ implies $0+(x+1)\equiv (0+x)+1\equiv (x+0)+1 \equiv x+1 \equiv (x+1) + 0$, we have
+		\begin{equation}
+			\forall x\; 0+x\equiv x+0
+		\end{equation}
+		
+		Assume $\forall x y+x\equiv x+y$, then $(y+1)+x \equiv (1+y)+x \equiv 1+(y+x) \equiv 1+(x+y) \equiv (1+x)+y \equiv (x+1)+y \equiv x+(1+y) \equiv x+(y+1)$. Then we have
+		\begin{equation}
+			\forall x\; y+x\equiv x+y \rightarrow (y+1)+x\equiv x+(y+1)
+		\end{equation}
+		
+		By $(7), (8), P_7$, we have
+		$$
+			\forall x \forall y \; x+y \equiv y+x
+		$$
+		
+	\end{sol}
+
+	
+	\begin{sol}{10.2}
+		Assume R-program $P$ can enumerate $T$. Let's define another R-program $Q$ based on $P$ (below is the corresponding pseudo code):
+		\begin{verbatim}
+		input: a sentense s0
+		procedure:
+			S = empty list
+			call P to enumerate all the sentences of T, for each sentense s in T
+				if S does not model s:
+					add s to S
+					
+				if s is s0:
+					
+					
+		\end{verbatim}
+		
+	\end{sol}
+		
+	\begin{sol}{10.3}
+		
+		
+	\end{sol}
+
+
+\end{document}
