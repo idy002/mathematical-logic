@@ -1,0 +1,71 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{enumitem} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\author{Ding Yaoyao}
+\title{Mathematical Logic Homework 9}
+
+\newenvironment{sol}[1]
+{\par\vspace{3mm}\noindent{\it Solution #1}.}
+{\qed}
+
+\newenvironment{thm}[1]
+{\par\vspace{3mm}\noindent{\textbf{#1}}.\quad}{\\\\}
+
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\fA}{\mathfrak{A}}
+\newcommand{\fB}{\mathfrak{B}}
+\newcommand{\fC}{\mathfrak{C}}
+\newcommand{\fI}{\mathfrak{I}}
+\newcommand{\fJ}{\mathfrak{J}}
+\newcommand{\fT}{\mathfrak{T}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\begin{document}
+	\maketitle
+	
+	\begin{sol}{9.1}
+		
+		(1)
+		
+		$\fA\models\varphi_0$: When $P:\Box\rightarrow\infty$, we have $A_{\mathbb{P}} = \mathbb{N}$, $<^{\fA}$ is the less order of $\mathbb{N}$ and $f^{\fA}(x) = x + 1$. Of course, $<^{\fA}$ is an order. $x < x + 1$ for all $x \in \mathbb{N}$ implies $\fA \models \forall x(x < fx)$. No $y \in \mathbb{N}$ such that $x < y < x + 1$ implies $\fA \models \forall x(\forall z(x < z \rightarrow (fx<z \vee fx\equiv z)))$. So $\fA \models \varphi_0$. When $P:\Box\rightarrow halt$, we have $A_{\mathbb{P}} = \{0, \dots, e\}$, $<^{\fA} = \{(i,j) \mid 0 \leq i < j \leq e\}$ and $f^{\fA}(x) = min(x + 1, e)$. $c^\fA = 0$ implies $\fA \models \forall x(c < x \vee c \equiv x)$. For all $x \in A$, $x < min(x+1,e)$ or $x = min(x+1,e)$, which implies $\fA \models \forall x(x < fx \vee x \equiv fx)$. The last part of $\varphi_0$ is the same as above when $x < e$. When $x = e$, no $y \in A$ such that $x < y$, so it's true directly. So $\fA \models \varphi_0$.
+		
+		$\fA\models R\overline{0}\overline{0}\dots\overline{0}$: When $\mathbb{P}$ starts with $\Box$, the initial configuration is $(0,0,\dots,0)$. The definition of $R$ implies $(\overline{0},\dots,\overline{0}) \in R$, which means $\fA\models R\overline{0}\overline{0}\dots\overline{0}$.
+		
+		$\fA\models \varphi_{\alpha_i}$: Assume $c_t$ is the configuration of the machine at step $t$ and the next instruction is $i$ and $c_{t+1}$ is the configuration that the $i$-th instruction has been executed. Because $\varphi_{\alpha_i}$ describe that 'if $c_t$ is the configuration before executing instruction $i$, then $c_{t+1}$ is also a configuration'. By the definition of configuration, $c_{t+1}$ must also be a configuration of the program $\mathbb{P}$, then $\fA \models \varphi_{\alpha_i}$.
+		
+		Above all, $\fA \models \varphi_{\mathbb{P}}$.
+		
+		(2)
+		
+		Because $(L,m_0,\dots,m_n)$ is a configuration $\mathbb{P}$ after $s$ steps, there exists $s$ configurations:
+		$$
+			c_0, c_1, \dots, c_{s-1}
+		$$
+		such that the configuration of $\mathbb{P}$ transforms from $c_0$ initially to $c_{s-1}$ and then $c_s = (L,m_0,\dots,m_n)$.
+		
+		Every configuration corresponds a state $S_i = (\overline{s_i},\overline{L_i},\overline{m^{(i)}_0},\dots,\overline{m^{(i)}_n})$, specially $S_0 = (\overline{0}, \dots, \overline{0})$. $\fA\models R(\overline{0},\dots,\overline{0})$ implies $\fA \models R(S_0)$. Assume $\fA \models R(S_i)$, and the next instruction of $S_i$ is instruction $j$, then by definition of $\varphi_{\alpha_{j}}$, we have $\fA \models R(S_{i+1})$. Finally we have $\fA \models R(S_s)$, which means $\fA \models R(\overline(s), \overline{L}, \overline{m_0}, \dots, \overline{m_n})$.
+		
+	\end{sol}
+	\begin{sol}{9.2}
+		
+		$A = \mathbb{N}$
+		
+		$f(x) = x + 1$, 
+		
+		$R = \{(s,L,m_0,\dots,m_n) \mid \text{ $\mathbb{P}$ reachs configuration $(L,m_0,\dots,m_n)$ after $s$ steps }\}$. 
+		
+		$c^\fA = 0$.
+	\end{sol}
+	\begin{sol}{9.3}\footnote{refers: https://github.com/blargoner/math-logic-ebbinghaus/blob/master/exercises.pdf}
+		Assume it's R-enumerable and the program is $P_1$. Because $\{\varphi \in L^{S_{\infty}}_0\mid \models\varphi \}$ is enumerable, there exists a program $P_2$ that can enumerable all such sentences. For a given formula $\varphi \in L^{S_{\infty}}_0$, run the two programs simultaneously. Once $P_2$ prints $\varphi$ or $P_1$ prints $\neg\varphi$, we can decide whether $\models\varphi$ holds. This process will stops in finite steps for any $\varphi$ because one of the two conditions must hold. As a result, we construct a program $P_3$ that can decide $\{\varphi \in L^{S_{\infty}}_0 \mid \models\varphi \}$, which is a contradiction.
+		
+		Above all, $\{\varphi \in L^{S_{\infty}}_0 \mid \text{ $\varphi$ is satisfiable } \}$ is not R-enumerable.
+	\end{sol}
+
+\end{document}
