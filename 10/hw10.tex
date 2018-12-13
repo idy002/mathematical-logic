@@ -96,24 +96,19 @@
 
 	
 	\begin{sol}{10.2}
-		Assume R-program $P$ can enumerate $T$. Let's define another R-program $Q$ based on $P$ (below is the corresponding pseudo code):
-		\begin{verbatim}
-		input: a sentense s0
-		procedure:
-			S = empty list
-			call P to enumerate all the sentences of T, for each sentense s in T
-				if S does not model s:
-					add s to S
-					
-				if s is s0:
-					
-					
-		\end{verbatim}
+		Because $T$ is R-enumerable, we can construct a program $P$ enumerate $T$. Assume $\varphi_1, \varphi_2, \dots$ is an enumeration. Then we can define 
+		$$
+			\Theta = \{\varphi_1, \varphi_1 \wedge \varphi_2, \varphi_1\wedge\varphi_2\wedge\varphi_3, \dots\},
+		$$
+		which is strictly R-enumerable(Because the length of sentences increases). Then $\Theta$ is R-decidable. By the definition of modeling, we have $T \models \Theta$(thus, $\Theta \subseteq T$) and $\Theta \models T$(also $T$ is a theory, then $T = \Theta^{\models}$).Then $T$ is R-axiomatizable.
 		
 	\end{sol}
 		
 	\begin{sol}{10.3}
-		
+		\begin{align}
+			\varphi_{exp}(x,y,z) = & \exists u\exists v (\varphi_{\beta}(u,v,0,1) \wedge \varphi_{\beta}(u,v,y,z) \wedge \\
+			& \forall i\;(i < y \rightarrow (\forall w \varphi_{\beta}(u,v,i,w)\rightarrow\varphi_{\beta}(u,v,i+1,w\cdot x))))
+		\end{align}
 		
 	\end{sol}
 
