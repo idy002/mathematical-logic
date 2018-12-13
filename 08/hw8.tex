@@ -1,0 +1,69 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{enumitem} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\author{Ding Yaoyao}
+\title{Mathematical Logic Homework 8}
+
+\newenvironment{sol}[1]
+{\par\vspace{3mm}\noindent{\it Solution #1}.}
+{\qed}
+
+\newenvironment{thm}[1]
+{\par\vspace{3mm}\noindent{\textbf{#1}}.\quad}{\\\\}
+
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\fA}{\mathfrak{A}}
+\newcommand{\fB}{\mathfrak{B}}
+\newcommand{\fC}{\mathfrak{C}}
+\newcommand{\fI}{\mathfrak{I}}
+\newcommand{\fJ}{\mathfrak{J}}
+\newcommand{\fT}{\mathfrak{T}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\begin{document}
+	\maketitle
+	
+	\begin{sol}{8.1}
+		(1) Wrong
+			
+			If it's correct, by (2), we can get the equivalence of decidability and enumerability. But it's wrong as discussed in class.
+			
+		(2) Correct
+		
+			$\Rightarrow$: We can enumerate all the elements of $A^*$ by increasing order of length, and decide whether the element belongs to $W$. If it belongs to $W$, we print it, otherwise not. 
+			
+			$\Leftarrow$: We can strictly enumerate the elements in $W$ and when the element we want to decide occurs, halts and when the length exceeds the length of element we want to decide, prints anything and halts.
+	\end{sol}
+
+	\begin{sol}{8.2}
+		Prove by contradiction.
+		
+		Assume it's R-decidable and the program $\mathcal{P}_0$ can decide the set.
+	
+		For all program $\mathcal{P}$, construct a mapping:$\mathcal{P}\rightarrow\mathcal{P^+}$ such as
+		\begin{verbatim}
+		if r0 not empty then
+		    loop forever
+		else
+		    call P
+		fi
+		\end{verbatim}
+		(I write the program in pseudo code and the same program of register machine version must exist)
+		
+		Then we can construct a program $\mathcal{P}_1$ that can decide $\Pi_{halt}$ such as
+		\begin{verbatim}
+		get w_P+ from w_P and store it to r0
+		call P0
+		\end{verbatim}
+		Then the above program $\mathcal{P}_1$ can decide $\Pi_{halt}$, which is a contradiction.
+		
+		In conclusion, the set in the problem statement is not decidable.
+	\end{sol}
+
+\end{document}
